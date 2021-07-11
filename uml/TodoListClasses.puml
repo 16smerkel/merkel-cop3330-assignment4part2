@@ -1,0 +1,109 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class TodoListManager {
+    main()
+    start()
+
+    TableView<TodoListItem> : table
+    TextField : nameInput
+    CheckBox : completeInput
+    DatePicker : dateInput
+
+    getProduct()
+    addItem()
+    deleteItem()
+    editItem()
+    clearAll()
+    refresh()
+}
+class TodoListManagerController {
+    model: TodoListModel
+    'GUI event handlers'
+    Button : addItemButton
+    DatePicker : dueDate
+    CheckBox : isComplete
+    TableView<TodoListItem> : table
+    VBox : vbMenu
+    TextField : title
+    TextField : completionCheck
+    FileChooser : fileChooser
+    TextArea : theDisplayTextArea
+    ListView<TodoListItem> : itemList
+    ObservableList<TodoListItem> : list
+
+    addItem(Event)
+    markComplete(Event)
+    getHelp(Event)
+    displayAll(Event)
+    displayIncomplete(Event)
+    displayComplete(Event)
+    saveItems(Event)
+    loadItems(Event)
+    extractCompletion(String)
+    extractDueDate(String)
+    extractTitle(String)
+    refresh()
+    initialize(URL, ResourceBundle )
+    addItemTest(String, String, String, boolean)
+    deleteItemTest(String, String, String, boolean)
+    editItemTest(String, String, String, boolean, String, String, boolean)
+    clearAllTest(String)
+    isItemComplete(String, String, boolean)
+}
+class TodoListModel {
+    title : String
+    TodoListItem : Collection
+
+    resultDisplay: TextField
+    addList()
+    removeList()
+    editTitle()
+    addItem()
+    removeItem()
+    editItemDescription()
+    editItemDueDate()
+    markComplete()
+    displayAllItems()
+    displayIncompleteItems()
+    displayCompleteItems()
+    saveItemsInSingleList()
+    saveItemsInAllList()
+    loadSingleList()
+    loadMultipleLists()
+    clearAll()
+    refresh()
+}
+class TodoListManagerControllerTest{
+    addItemSet()
+    deleteItemSet()
+    editItemSet()
+    clearAllSet()
+    isItemCompleteSet()
+    isItemIncompleteSet()
+    extractNotComplete()
+    extractComplete()
+    extractNeitherComplete()
+    extractDueDate()
+    extractNoDueDate()
+    extractTitle()
+    extractNoTitle()
+}
+class TodoListItem {
+    description : String
+    dueDate : integer
+    isComplete : boolean
+
+    updateDescription(String)
+    updateDueDate(integer)
+    updateIsComplete(isComplete)
+    toString(): String
+}
+
+javafx.Application <|-- TodoListManager
+TodoListManager -- TodoListManagerController
+TodoListManagerController *--> TodoListModel
+TodoListManagerController *--> TodoListManagerControllerTest
+TodoListModel *-> TodoListItem
+
+@enduml

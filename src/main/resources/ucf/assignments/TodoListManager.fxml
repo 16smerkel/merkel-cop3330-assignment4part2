@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="210.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.TodoListManagerController">
+    <children>
+        <SplitPane dividerPositions="0.13220338983050847, 0.5, 0.5" orientation="VERTICAL" style="-fx-background-color: pink;">
+            <items>
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="670.0" style="-fx-background-color: pink;">
+                    <children>
+                        <MenuButton layoutX="33.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#saveItems" text="Save" />
+                                <MenuItem mnemonicParsing="false" onAction="#loadItems" text="Load" />
+                            </items>
+                        </MenuButton>
+                  <VBox fx:id="vbMenu" layoutX="616.0" layoutY="8.0" prefHeight="0.0" prefWidth="18.0" />
+                    </children>
+                </AnchorPane>
+                <TextField text="Your Todo List">
+                    <font>
+                        <Font name="Comic Sans MS Bold" size="15.0" />
+                    </font>
+                </TextField>
+                <ListView fx:id="itemList" editable="true" prefHeight="101.0" prefWidth="675.0" />
+                <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="600.0" style="-fx-background-color: pink;">
+                    <children>
+                        <Button fx:id="addItemButton" layoutY="1.0" mnemonicParsing="false" onAction="#addItem" text="Add " />
+                        <DatePicker fx:id="dueDate" layoutX="87.0" layoutY="1.0" />
+                        <CheckBox fx:id="isComplete" layoutX="53.0" layoutY="4.0" mnemonicParsing="false" onAction="#markComplete" />
+                        <MenuButton layoutX="585.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Display">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#displayAll" text="All" />
+                                <MenuItem mnemonicParsing="false" onAction="#displayIncomplete" text="Incomplete" />
+                                <MenuItem mnemonicParsing="false" onAction="#displayComplete" text="Complete" />
+                            </items>
+                        </MenuButton>
+                  <TextField fx:id="completionCheck" layoutX="509.0" layoutY="3.0" prefHeight="4.0" prefWidth="17.0" />
+                        <TextField fx:id="title" layoutX="274.0" layoutY="1.0" prefHeight="26.0" prefWidth="290.0" promptText="add task description here" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+        <TextArea fx:id="theDisplayTextArea" layoutX="677.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" />
+    </children>
+
+</AnchorPane>
